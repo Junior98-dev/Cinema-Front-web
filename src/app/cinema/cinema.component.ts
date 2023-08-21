@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CinemaService } from '../services/cinema.service';
 
 @Component({
   selector: 'app-cinema',
@@ -10,20 +11,34 @@ export class CinemaComponent implements OnInit
 {
 
   public villes:any;
+  public cinemas:any;
+  public currentVille:any;
+  public vurrentCinema: any;
 
-  constructor(private http:HttpClient){}
+  constructor(private cinemaService:CinemaService){}
 
 
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
-    this.http.get("http://localhost:8286/villes").subscribe(
+    this.cinemaService.getVilles().subscribe(
       data => {
         this.villes=data;
       },err => {
         console.log(err);
       }
-    )
+    ) 
     
   }
+  
+  onGetCinemas(v: any){   
+    this.currentVille=v;                          
+    this.cinemaService.getCinemas(v)
+      .subscribe(data=>{
+        this.cinemas=data;
+      },err=>{
+        console.log(err);
+      })
+  } 
+  
 
 }
