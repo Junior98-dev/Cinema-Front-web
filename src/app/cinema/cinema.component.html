@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4">
             <ul *ngIf="villes" class="list-group">
-                <li [ngClass]="v==currentVille?'active':''" *ngFor="let v of villes._embedded.villes" class="list-group-item" (click)="onGetCinemas(v)">
+                <li [ngClass]="v==currentVille?'active':''" *ngFor="let v of villes._embedded.villes" class="list-group-item clickable" (click)="onGetCinemas(v)">
                    {{v.name}}
                 </li>
             </ul>
@@ -12,7 +12,7 @@
                 <div class="panel-heading">Liste des Cinemas</div>
                 <div class="panel-body">
                     <ul *ngIf="cinemas" class="nav nav-pills">
-                        <li *ngFor="let c of cinemas._embedded.cinemas">
+                        <li *ngFor="let c of cinemas._embedded.cinemas" class="clickable">
                             <a>{{c.name}}</a>
                         </li>
                     </ul>
