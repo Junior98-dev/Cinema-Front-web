@@ -12,8 +12,9 @@ export class CinemaComponent implements OnInit
 
   public villes:any;
   public cinemas:any;
+  public salles:any;
   public currentVille:any;
-  public vurrentCinema: any;
+  public currentCinema: any;
 
   constructor(private cinemaService:CinemaService){}
 
@@ -38,7 +39,17 @@ export class CinemaComponent implements OnInit
       },err=>{
         console.log(err);
       })
-  } 
+  }
+  
+  onGetSalles(c: any){
+    //this.currentCinema=c;
+    this.cinemaService.getSalles(c)
+      .subscribe(data=>{
+        this.salles=data;
+      },err=>{
+        console.log(err);
+      })
+  }
   
 
 }
