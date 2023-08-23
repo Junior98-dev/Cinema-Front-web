@@ -18,6 +18,6 @@ export class CinemaService {
     return this.http.get(v._links.cinemas.href);
   }
   getSalles(c: any){
-    return this.http.get(this.host+"/salles");
+    return this.http.get(c._links.salles.href);
   }
 }

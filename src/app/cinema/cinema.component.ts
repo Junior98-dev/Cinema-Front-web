@@ -42,7 +42,7 @@ export class CinemaComponent implements OnInit
   }
   
   onGetSalles(c: any){
-    //this.currentCinema=c;
+    this.currentCinema=c;
     this.cinemaService.getSalles(c)
       .subscribe(data=>{
         this.salles=data;
